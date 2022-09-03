@@ -5,7 +5,9 @@ const LINEToken = PropertiesService.getScriptProperties().getProperty('LINE_NOTI
 function main(): void {
     try {
         const utils = new Utils();
-        const gmailMessageList = utils.getTargetGmailMessages();
+        const searchString = utils.createGmailSearchString(getTargetFromEmailList())
+        const myThreads = GmailApp.search(searchString);
+        const gmailMessageList = GmailApp.getMessagesForThreads(myThreads);
         const outputMessageList = utils.createOutputMessages(gmailMessageList);
         for(let i = 0; i < outputMessageList.length; i++) {
             sendToLINE(outputMessageList[i]);
@@ -13,6 +15,12 @@ function main(): void {
     } catch(error) {
         Logger.log(error);
     }
+}
+
+function getTargetFromEmailList(): string[] { //privateでよさそう、テストの都合上public
+    return [
+        'hoict@hoict.jp', //保育園のやつ
+    ];
 }
 
 // LINEに転送する
