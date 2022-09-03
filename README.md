@@ -12,3 +12,8 @@ $ clasp push
 └─ src/appsscript.json
 └─ src/code.ts
 ```
+
+## test
+```shell
+$ npm test
+```
