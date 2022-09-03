@@ -1,8 +1,8 @@
 # line-notify-from-gmail
 
 ## how to use
-- プロジェクトの設定 > スクリプト プロパティにLINE_NOTIFY_TOKENを追加
-- トリガーを設定(関数: main)
+- プロジェクトの設定 > スクリプト プロパティに`LINE_NOTIFY_TOKEN`を追加
+- トリガーを設定(関数: `main`)
 
 ## clasp
 ```shell
