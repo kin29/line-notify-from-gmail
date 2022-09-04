@@ -1,11 +1,12 @@
 import { Utils } from "./_utils";
 
 const LINEToken = PropertiesService.getScriptProperties().getProperty('LINE_NOTIFY_TOKEN');
+const targetFromEmailListString = PropertiesService.getScriptProperties().getProperty('TARGET_FROM_EMAIL_LIST');
 
 function main(): void {
     try {
         const utils = new Utils();
-        const searchString = utils.createGmailSearchString(getTargetFromEmailList())
+        const searchString = utils.createGmailSearchString(targetFromEmailListString.split(','))
         const targetGmailThreads = GmailApp.search(searchString);
         const targetGmailMessageList = GmailApp.getMessagesForThreads(targetGmailThreads);
         const outputMessageList = utils.createOutputMessages(targetGmailMessageList);
@@ -15,12 +16,6 @@ function main(): void {
     } catch(error) {
         Logger.log(error);
     }
-}
-
-function getTargetFromEmailList(): string[] {
-    return [
-        'hoict@hoict.jp', //保育園のやつ
-    ];
 }
 
 // LINEに転送する
