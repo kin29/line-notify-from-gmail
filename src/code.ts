@@ -9,9 +9,9 @@ function main(): void {
         const searchString = utils.createGmailSearchString(targetFromEmailListString.split(','))
         const targetGmailThreads = GmailApp.search(searchString);
         const targetGmailMessageList = GmailApp.getMessagesForThreads(targetGmailThreads);
-        const outputMessageList = utils.createOutputMessages(targetGmailMessageList);
-        for(let i = 0; i < outputMessageList.length; i++) {
-            sendToLINE(outputMessageList[i]);
+        const messageListForLINE = utils.createMessageListForLINE(targetGmailMessageList);
+        for(let i = 0; i < messageListForLINE.length; i++) {
+            sendToLINE(messageListForLINE[i]);
         }
     } catch(error) {
         Logger.log(error);

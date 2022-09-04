@@ -21,7 +21,7 @@ describe('Utils.createGmailSearchString', () => {
     })
 })
 
-describe('Utils.createOutputMessages', () => {
+describe('Utils.createMessageListForLINE', () => {
     test('LINE用のメッセージを生成できること', () => {
         const inputGmailMessageMultiList = [
             [
@@ -34,7 +34,7 @@ describe('Utils.createOutputMessages', () => {
         ];
 
         const util = new Utils();
-        const actual = util.createOutputMessages(inputGmailMessageMultiList);
+        const actual = util.createMessageListForLINE(inputGmailMessageMultiList);
         expect(actual.length).toBe(2);
         expect(actual[0]).toBe(` 10/4 8:41
 [from]from1-2@localhost
