@@ -12,10 +12,10 @@ export class Utils {
     }
 
     // LINE通知用のメッセージを作る
-    public createOutputMessages(gmailMessages: GoogleAppsScript.Gmail.GmailMessage[][]): string[] {
+    public createOutputMessages(gmailMessageMultiList: GoogleAppsScript.Gmail.GmailMessage[][]): string[] {
         let outputMessages = [];
-        for(let i = 0; i < gmailMessages.length; i++){
-            const message = gmailMessages[i].slice(-1)[0];
+        for(let i = 0; i < gmailMessageMultiList.length; i++){
+            const message = gmailMessageMultiList[i].slice(-1)[0]; //スレッドの最末尾(最新)のメッセージを使う
             outputMessages[i] = " "
                 + (message.getDate().getMonth()+1)
                 + "/"+ message.getDate().getDate()

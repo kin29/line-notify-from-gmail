@@ -6,9 +6,9 @@ function main(): void {
     try {
         const utils = new Utils();
         const searchString = utils.createGmailSearchString(getTargetFromEmailList())
-        const myThreads = GmailApp.search(searchString);
-        const gmailMessageList = GmailApp.getMessagesForThreads(myThreads);
-        const outputMessageList = utils.createOutputMessages(gmailMessageList);
+        const targetGmailThreads = GmailApp.search(searchString);
+        const targetGmailMessageList = GmailApp.getMessagesForThreads(targetGmailThreads);
+        const outputMessageList = utils.createOutputMessages(targetGmailMessageList);
         for(let i = 0; i < outputMessageList.length; i++) {
             sendToLINE(outputMessageList[i]);
         }
@@ -17,7 +17,7 @@ function main(): void {
     }
 }
 
-function getTargetFromEmailList(): string[] { //privateでよさそう、テストの都合上public
+function getTargetFromEmailList(): string[] {
     return [
         'hoict@hoict.jp', //保育園のやつ
     ];
